@@ -34,6 +34,12 @@ namespace API.Repository
             return await _context.SaveChangesAsync() > 0;
         }
 
+        public async Task<bool> Add(Location entityClass)
+        {
+            await _context.Set<Location>().AddAsync(entityClass);
+            return await _context.SaveChangesAsync() > 0;
+        }
+
         public async Task<bool> Update(T entityClass)
         {
             _context.Set<T>().Update(entityClass);

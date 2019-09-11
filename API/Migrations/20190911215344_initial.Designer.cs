@@ -11,7 +11,7 @@ using System;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190911013037_initial")]
+    [Migration("20190911215344_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,7 +26,7 @@ namespace API.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("name");
+                    b.Property<string>("Name");
 
                     b.HasKey("Id");
 
@@ -38,6 +38,8 @@ namespace API.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Category");
+
                     b.Property<string>("Description");
 
                     b.Property<int>("Grade");
@@ -46,11 +48,7 @@ namespace API.Migrations
 
                     b.Property<string>("Reviews");
 
-                    b.Property<int?>("categoriaId");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("categoriaId");
 
                     b.ToTable("Location");
                 });
@@ -59,6 +57,8 @@ namespace API.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
 
                     b.Property<string>("Password");
 
@@ -69,13 +69,6 @@ namespace API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User");
-                });
-
-            modelBuilder.Entity("API.Entities.Location", b =>
-                {
-                    b.HasOne("API.Entities.Category", "categoria")
-                        .WithMany()
-                        .HasForeignKey("categoriaId");
                 });
 #pragma warning restore 612, 618
         }

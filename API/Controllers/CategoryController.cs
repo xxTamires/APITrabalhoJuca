@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
+    [Route("api/[controller]")]
     public class CategoryController : Controller
     {
         private readonly IBaseService<Category> _service;
+
+        public CategoryController(IBaseService<Category> service)
+        {
+            _service = service;
+        }
 
         [HttpGet]
         public List<Category> Get()
@@ -23,15 +29,15 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<bool> Post([FromBody]Category location)
+        public async Task<bool> Post([FromBody]Category category)
         {
-            return await _service.Add(location);
+            return await _service.Add(category);
         }
 
-        [HttpPut("{id}")]
-        public async Task<bool> Put([FromBody]Category location)
+        [HttpPut()]
+        public async Task<bool> Put([FromBody]Category category)
         {
-            return await _service.Update(location);
+            return await _service.Update(category);
         }
 
         [HttpDelete("{id}")]

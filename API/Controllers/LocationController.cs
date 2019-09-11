@@ -11,6 +11,11 @@ namespace API.Controllers
     {
         private readonly IBaseService<Location> _service;
 
+        public LocationController(IBaseService<Location> service)
+        {
+            _service = service;
+        }
+
         [HttpGet]
         public List<Location> Get()
         {

@@ -33,6 +33,7 @@ namespace API.Service
         {
             var exist = await getById(entityClass.Id);
             if (exist == null) return false;
+            exist.Name = entityClass.Name;
             return await _repository.Update(exist);
         }
 
