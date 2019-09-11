@@ -7,7 +7,7 @@ namespace API.Entities
         public string Name { get; set; }
         public int Grade { get; set; }
         public string Description { get; set; }
-        public List<string> Reviews { get; set; }
+        public string Reviews { get; set; }
         public Category categoria { get; set; }
     }
 }
