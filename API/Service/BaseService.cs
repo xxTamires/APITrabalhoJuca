@@ -13,7 +13,7 @@ namespace API.Service
         {
             _repository = repository;
         }
-
+        
         public List<T> getAll()
         {
             return _repository.getAll();
@@ -42,6 +42,14 @@ namespace API.Service
             var entityClass = await getById(id);
             if (entityClass == null) return false;
             return await _repository.Delete(entityClass);
+        }
+
+        public async Task<bool> Login(User entityClass)
+        {
+            var exist = await _repository.getUser(entityClass.Username);
+            if (exist == null) return false;
+            if (entityClass.Username == exist.Username && entityClass.Password == exist.Password) return true;
+            else return false;
         }
     }
 }

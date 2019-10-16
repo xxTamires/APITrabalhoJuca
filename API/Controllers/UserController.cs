@@ -40,6 +40,12 @@ namespace API.Controllers
             return await _service.Update(user);
         }
 
+        [HttpPut("Login")]
+        public async Task<bool> Login([FromBody]User user)
+        {
+            return await _service.Login(user);
+        }
+
         [HttpDelete("{id}")]
         public async Task<bool> Delete(int id)
         {

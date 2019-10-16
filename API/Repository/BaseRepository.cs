@@ -28,6 +28,11 @@ namespace API.Repository
             return await _context.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
         }
 
+        public async Task<User> getUser(string username)
+        {
+            return await _context.Set<User>().FirstOrDefaultAsync(x => x.Username == username);
+        }
+
         public async Task<bool> Add(T entityClass)
         {
             await _context.Set<T>().AddAsync(entityClass);

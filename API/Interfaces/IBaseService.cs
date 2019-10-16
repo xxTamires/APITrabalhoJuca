@@ -13,5 +13,6 @@ namespace API.Interfaces
         Task<bool> Add(T entityClass);
         Task<bool> Update(T entityClass);
         Task<bool> Delete(int id);
+        Task<bool> Login(User entityClass);
     }
 }

@@ -54,6 +54,8 @@ namespace API
             services.AddScoped<IBaseService<Location>, BaseService<Location>>();
             services.AddScoped<IBaseRepository<Category>, BaseRepository<Category>>();
             services.AddScoped<IBaseService<Category>, BaseService<Category>>();
+            services.AddScoped<IBaseRepository<User>, BaseRepository<User>>();
+            services.AddScoped<IBaseService<User>, BaseService<User>>();
 
             services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }

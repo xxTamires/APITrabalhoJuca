@@ -14,7 +14,17 @@ namespace API
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            var configurations = new ConfigurationBuilder()
+                .AddCommandLine(args)
+                .Build();
+
+            new WebHostBuilder()
+                .UseConfiguration(configurations)
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseStartup<Startup>()
+                .Build()
+                .Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) =>

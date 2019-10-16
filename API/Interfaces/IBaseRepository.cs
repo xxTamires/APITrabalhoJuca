@@ -12,5 +12,6 @@ namespace API.Interfaces
         Task<bool> Update(T entityClass);
         Task<bool> Delete(T entityClass);
         Task<bool> Add(Location entityClass);
+        Task<User> getUser(string username);
     }
 }
